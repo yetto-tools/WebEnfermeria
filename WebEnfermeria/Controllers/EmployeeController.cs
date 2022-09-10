@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebEnfermeria.AppDbContext;
 using WebEnfermeria.DTOs.Employee;
+using WebEnfermeria.Entities.CompaniesRecord;
 using WebEnfermeria.Entities.Employee;
 
 namespace WebEnfermeria.Controller
@@ -22,7 +23,7 @@ namespace WebEnfermeria.Controller
         [HttpGet]
         public async Task<List<EmployeeDTO>> Get()
         {
-            var employees =  await _context.Employees.Include(x => x.RecordCompanyId).ToListAsync();
+            var employees =  await _context.Employees.Include(x => x.CompaniesRecordId).ToListAsync();
            
             return mapper.Map<List<EmployeeDTO>>(employees);
 
@@ -38,7 +39,7 @@ namespace WebEnfermeria.Controller
             {
                 return BadRequest($"Ya Existe Una Empresa con el Mismo Nombre: {employeedto.PersonId.FullName}");
             }
-            var employee = mapper.Map<EmployeeEntity>(employeedto);
+            var employee = mapper.Map<CompanyRecordEntity>(employeedto);
 
             _context.Add(employee);
 

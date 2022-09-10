@@ -1,9 +1,18 @@
 ﻿using AutoMapper;
-using WebEnfermeria.Entities.Company;
-using WebEnfermeria.Entities.Employee;
+
 using WebEnfermeria.DTOs.Company;
+using WebEnfermeria.Entities.Company;
+
 using WebEnfermeria.DTOs.Employee;
-using WebEnfermeria.DTOs;
+using WebEnfermeria.Entities.Employee;
+
+using WebEnfermeria.DTOs.Person;
+using WebEnfermeria.Entities.Person;
+
+using WebEnfermeria.DTOs.CompaniesRecord;
+using WebEnfermeria.Entities.CompaniesRecord;
+using WebEnfermeria.Entities.Status;
+using WebEnfermeria.DTOs.Status;
 
 namespace WebEnfermeria.Utilities
 {
@@ -11,20 +20,33 @@ namespace WebEnfermeria.Utilities
     {
         public AutoMapperProfiles()
         {
+            /* Status is Required */
+            //Mapped to Read
+            CreateMap<StatusEmployeeEntity, StatusEmployeeDTO>();
+            //Mapped to Write 
+            CreateMap<StatusEmployeeDTO, StatusEmployeeEntity>();
+
+            /* Company is Required */
             //Mapped to Read
             CreateMap<CompanyEntity, CompanyDTO>();
             //Mapped to Write 
             CreateMap<CompanyDTO, CompanyEntity>();
+            
+            /* Person is Required */
+            //Mapped to Read 
+            CreateMap<PersonEntity, PersonDTO>();
+            //Mapped to Write 
+            CreateMap<PersonDTO, PersonEntity>();
 
-            //Mapped to Write
-            CreateMap<EmployeeEntity, EmployeeDTO>();
-            //Mapped to Write
-            CreateMap<EmployeeDTO, EmployeeEntity>();
+            //Company Redord Mapped to Write
+            CreateMap<CompanyRecordEntity, EmployeeDTO>();
+            //Company Record Mapped to Write
+            CreateMap<EmployeeDTO,CompanyRecordEntity>();
 
+            //Company Record Mapped to Write
+            CreateMap<CompanyRecordEntity, CompaniesRecordDTO>();
             //Mapped to Write
-            CreateMap<RecordCompanyEntity, RecordCompanyDTO>();
-            //Mapped to Write
-            CreateMap<RecordCompanyDTO, RecordCompanyEntity>();
+            CreateMap<CompaniesRecordDTO, CompanyRecordEntity>();
 
 
 

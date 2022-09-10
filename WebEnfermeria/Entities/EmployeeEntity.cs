@@ -1,30 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WebEnfermeria.DTOs;
-
-
+using WebEnfermeria.Entities.CompaniesRecord;
+using WebEnfermeria.Entities.Person;
+using WebEnfermeria.Entities.Status;
 
 namespace WebEnfermeria.Entities.Employee
 {
     public class EmployeeEntity
     {
         public UInt32 Id { get; set; }
+
+        public StatusEmployeeEntity Status { get; set; }
+        public int Code { get; set; } = 0;
+
         [Required]
         public PersonEntity PersonId { get; set; }
-        public bool IsActive { get; set; } = true;
-        public int Code { get; set; } = 0;
         public string CardNumber { get; set; } = string.Empty;
-
-        [DataType(DataType.Date)]
-        [Column(TypeName = "Date")]
-        [Display(Name = "Fecha de Ingreso")]
-        public DateTime Income { get; set; }
-
-        [DataType(DataType.Date)]
-        [Column(TypeName = "Date")]
-        [Display(Name = "Fecha de Egreso")]
-        public DateTime Egress { get; set; }
-        public List<RecordCompanyDTO> RecordCompanyId { get; set; }
+        public List<CompanyRecordEntity> CompaniesRecordId { get; set; } = new List<CompanyRecordEntity>();
     }
 
     

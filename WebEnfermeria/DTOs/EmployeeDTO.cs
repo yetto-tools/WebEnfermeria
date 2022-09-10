@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebEnfermeria.DTOs.CompaniesRecord;
 using WebEnfermeria.DTOs.Person;
+using WebEnfermeria.DTOs.Status;
 
 namespace WebEnfermeria.DTOs.Employee
 {
@@ -14,16 +16,14 @@ namespace WebEnfermeria.DTOs.Employee
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
         [Display(Name = "Fecha de Nacimiento")]
-        public DateOnly Birday { get; set; }
-        
-        [Display(Name = "Activo")]
-        public bool IsActive { get; set; } = true;
+        public DateTime Birday { get; set; }
+
+        [Display(Name = "Estado")]
+        [StringLength(maximumLength: 15, ErrorMessage = "Field Maximum Length")]
+        public StatusEmployeeDTO StatusId { get; set; }
         public int Code { get; set; } = 0;
-        public string CardNumber { get; set; } = string.Empty;
-        public DateOnly Income { get; set; }
-        public DateOnly Egress { get; set; }
-        
-        public List<RecordCompanyDTO> RecordCompanyId { get; set; } = new List<RecordCompanyDTO>();
+        public string CardNumber { get; set; } = string.Empty;        
+        public List<CompaniesRecordDTO> CompaniesRecordId { get; set; } = new List<CompaniesRecordDTO>();
 
 
         public DateTime CreateDate { get; set; } = DateTime.Now;
