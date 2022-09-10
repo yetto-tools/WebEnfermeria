@@ -12,6 +12,12 @@ namespace WebEnfermeria.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IMapper mapper;
 
+        public StatusController(ApplicationDbContext context, IMapper mapper)
+        {
+            _context = context;
+            this.mapper = mapper;
+        }
+
 
     }
 }
